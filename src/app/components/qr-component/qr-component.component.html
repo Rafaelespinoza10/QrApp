@@ -1,0 +1,19 @@
+<div class="scanner-container">
+  <zxing-scanner
+  *ngIf="enabledCamera"
+    [formats]="formatsEnabled"
+    (scanSuccess)="onCodeResult($event)"
+    [tryHarder]="tryHarder"
+    [torch]="torchEnabled"
+    [device]="deviceCurrent"
+    (camerasFound)="onCamerasFound($event)"
+    (permissionResponse)="onHasPermission($event)"
+    (torchCompatible)="onTorchCompatible($event)"
+  ></zxing-scanner>
+
+  <div class="flex items-center justify-center gap-4 border border-b-2">
+    <button (click)="toggleCamera()"> {{enabledCamera ? 'Apagar Camara' : 'Encender Camara' }}</button>
+    <button (click)="toggleTorch()">{{ torchEnabled ? 'Apagar linterna' : 'Encender linterna'}}</button>
+  </div>
+
+</div>
